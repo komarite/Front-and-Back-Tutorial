@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit Post</title>
+{% endblock %}
+
+{% block body %} 
+<div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="/" class="active">Ana Sayfa</a>
+    </div>
+    
+    <!-- Left-aligned links (default) -->
+    <a href="posts">Postlar</a>
+    <a href="contact.html">İletişim</a>
+    
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="#search">Arama</a>
+      <a href="#about">Hakkımızda</a>
+    </div>
+    
+  </div>
+<h1>Editing Post</h1>
+
+    <hr>
+    <h2>Edit:</h2>
+    <form action='/posts/edit/{{post.id}}' method='POST'>
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Title</label>
+          </div>
+          <div class="col-75">
+            <input type='text' name='title' id='title' value="{{post.title}}">
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+              <label for="subject">Author</label>
+            </div>
+            <div class="col-75">
+              <input type='text' name='author' id='aurhor' value="{{post.author}}">
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Save</label>
+          </div>
+          <div class="col-75">
+            <textarea type='text' name='content' id='content' placeholder="Write something.." style="height:200px" value="{{post.content}}" ></textarea>
+          </div>
+        </div>
+        
+        <div class="row">
+          <input type="submit" value="Post">
+        </div>
+      </form>
+    <hr>
+
+{% endblock %}

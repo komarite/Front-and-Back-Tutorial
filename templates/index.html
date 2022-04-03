@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %} 
+<div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="/" class="active">Ana Sayfa</a>
+    </div>
+    
+    <!-- Left-aligned links (default) -->
+    <a href="posts">Postlar</a>
+    <a href="contact.html">İletişim</a>
+    
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="#search">Arama</a>
+      <a href="#about">Hakkımızda</a>
+    </div>
+    
+  </div>
+  <div class="home">
+      <h1>AnaSayfa</h1>
+      {% for post in posts %}
+        <h2>{{ post.title }}</h2>
+        {% if post.author %}
+            <h3>By: {{ post.author }}</h3>
+        {% else %}
+            <h3>By: N/A</h3>
+        {% endif %}
+        <p>{{ post.content }}</p>
+      <hr>
+    {% endfor %}
+  </div>
+
+  
+{% endblock %}

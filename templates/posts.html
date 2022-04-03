@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Posts</title>
+{% endblock %}
+
+{% block body %} 
+<div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="/" class="active">Ana Sayfa</a>
+    </div>
+    
+    <!-- Left-aligned links (default) -->
+    <a href="posts">Postlar</a>
+    <a href="contact.html">İletişim</a>
+    
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="#search">Arama</a>
+      <a href="#about">Hakkımızda</a>
+    </div>
+    
+  </div>
+    <hr>
+    <h2>Create New Blog Post:</h2>
+    <form action="/posts" method="post">
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Title</label>
+          </div>
+          <div class="col-75">
+            <input type='text' name='title' id='title'>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+              <label for="subject">Author</label>
+            </div>
+            <div class="col-75">
+              <input type='text' name='author' id='aurhor'>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Post</label>
+          </div>
+          <div class="col-75">
+            <textarea type='text' name='content' id='content' placeholder="Write something.." style="height:200px" ></textarea>
+          </div>
+        </div>
+        
+        <div class="row">
+          <input type="submit" value="Post">
+        </div>
+      </form>
+    <hr>
+
+    {% for post in posts %}
+        <h2>{{ post.title }}</h2>
+        {% if post.author %}
+            <h3>By: {{ post.author }}</h3>
+        {% else %}
+            <h3>By: N/A</h3>
+        {% endif %}
+        <p>{{ post.content }}</p>
+        <button class="btn delete"onclick="window.location='/posts/delete/{{post.id}}'">delete</button>
+        <button class="btn delete" onclick="window.location='/posts/edit/{{post.id}}'">Edit</button>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

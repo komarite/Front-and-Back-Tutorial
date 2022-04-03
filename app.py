@@ -30,11 +30,12 @@ all_posts = [
 
 @app.route('/hakkimizda')
 def hakkimizda():
-    return render_template('hakkimizda.html')
+    return render_template ('hakkimizda.html')
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    return render_template ('contact.html')
+
 
 @app.route('/')
 def index():
